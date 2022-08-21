@@ -28,7 +28,7 @@ flows:
     customer_org:
         steps:
             1:
-                flow: deploy_unmanaged
+                task: dx_push
             2:
                 task: assign_permission_sets
                 options:

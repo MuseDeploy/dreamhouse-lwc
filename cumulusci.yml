@@ -41,6 +41,8 @@ flows:
                 flow: customer_org
             2:
                 task: load_dataset
+                ui_options:
+                    is_required: False
 
 plans:
   install:

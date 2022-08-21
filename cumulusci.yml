@@ -1,4 +1,4 @@
-minimum_cumulusci_version: '3.63.0'
+minimum_cumulusci_version: '3.61.0'
 project:
     name: dreamhouse-lwc
     package:

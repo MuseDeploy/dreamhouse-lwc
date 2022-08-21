@@ -1,0 +1,19 @@
+{
+  "orgName": "Dreamhouse LWC CumulusCI Demo - Dev Org",
+  "edition": "Developer",
+  "features": ["Walkthroughs", "EnableSetPasswordInApi"],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser": true,
+      "sessionSettings": {
+        "forceRelogin": false
+      }
+    }
+  }
+}

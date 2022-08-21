@@ -1,0 +1,12 @@
+name: Publish to MuseDeploy
+on:
+  release:
+    types: [published]
+jobs:
+  metadeploy-publish:
+    name: "MuseDeploy Publish"
+    uses: musedeploy/standard-workflows/.github/workflows/musedeploy-publish.yml@main
+    secrets:
+      cumulusci-service-metadeploy: "${{ secrets.CUMULUSCI_SERVICE_METADEPLOY }}"
+    with:
+      tag: "${{ github.event.release.tag_name }}"

@@ -1,0 +1,15 @@
+name: Create Release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The version number to use in creating the release
+        required: true
+        type: string
+
+jobs:
+  feature-test:
+    name: "Create Release in GitHub"
+    uses: musedeploy/standard-workflows/.github/workflows/create-release-unmanaged.yml@main
+    with:
+      version: "${{ inputs.version }}"

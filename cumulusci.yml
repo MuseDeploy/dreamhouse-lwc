@@ -1,0 +1,68 @@
+minimum_cumulusci_version: '3.63.0'
+project:
+    name: dreamhouse-lwc
+    package:
+        name: Dreamhouse LWC CumulusCI Demo
+        api_version: '55.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/dreamhouse-lwc/tests
+            options:
+                outputdir: robot/dreamhouse-lwc/results
+
+    robot_testdoc:
+        options:
+            path: robot/dreamhouse-lwc/tests
+            output: robot/dreamhouse-lwc/doc/dreamhouse-lwc_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
+
+flows:
+    customer_org:
+        steps:
+            1:
+                flow: deploy_unmanaged
+            2:
+                task: assign_permission_sets
+                options:
+                    api_names:
+                        - dreamhouse
+        
+    customer_org_full:
+        steps:
+            1:
+                flow: customer_org
+            2:
+                task: load_dataset
+
+plans:
+  install:
+    slug: install
+    title: Install Dreamhouse Base
+    tier: secondary
+    is_listed: True
+    preflight_message: "This will install the Dreamhouse unmanaged code into your org and grant permissions sets"
+    post_install_message: "Thank you for installing.  This is only a demo but normally this content would contain links to next steps"
+    error_message: "To get help with this error... this is only a demo but normally links for next steps would be here"
+    steps:
+      1:
+        flow: customer_org
+
+  install_full:
+    slug: install
+    title: Install Dreamhouse and Sample Data
+    tier: primary
+    is_listed: True
+    preflight_message: "This will install and configure Dreamhouse in your org"
+    post_install_message: "Thank you for installing.  This is only a demo but normally this content would contain links to next steps"
+    error_message: "To get help with this error... this is only a demo but normally links for next steps would be here"
+    steps:
+      1:
+        flow: customer_org_full

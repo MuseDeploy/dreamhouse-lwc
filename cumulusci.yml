@@ -29,9 +29,12 @@ flows:
         steps:
             1:
                 task: dx_push
+                ui_options:
+                    label: Deploy Metadata
             2:
                 task: assign_permission_sets
                 options:
+                    label: Assign Permission Sets
                     api_names:
                         - dreamhouse
         
@@ -42,6 +45,7 @@ flows:
             2:
                 task: load_dataset
                 ui_options:
+                    label: Load Sample Dataset
                     is_required: False
 
 plans:

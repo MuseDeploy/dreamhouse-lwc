@@ -35,9 +35,10 @@ flows:
             2:
                 task: assign_permission_sets
                 options:
-                    name: Assign Permission Sets
                     api_names:
                         - dreamhouse
+                ui_options:
+                    name: Assign Permission Sets
         
     customer_org_full:
         steps:
@@ -46,7 +47,7 @@ flows:
             2:
                 task: load_dataset
                 ui_options:
-                    label: Load Sample Dataset
+                    name: Load Sample Dataset
                     is_required: False
 
     release_2gp_beta:

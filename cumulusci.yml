@@ -3,6 +3,7 @@ project:
     name: dreamhouse-lwc
     package:
         name: Dreamhouse LWC CumulusCI Demo
+        namespace: d2x
         api_version: '55.0'
     git:
         default_branch: 'main'
@@ -30,11 +31,11 @@ flows:
             1:
                 task: dx_push
                 ui_options:
-                    label: Deploy Metadata
+                    name: Deploy Metadata
             2:
                 task: assign_permission_sets
                 options:
-                    label: Assign Permission Sets
+                    name: Assign Permission Sets
                     api_names:
                         - dreamhouse
         
@@ -47,6 +48,19 @@ flows:
                 ui_options:
                     label: Load Sample Dataset
                     is_required: False
+
+    release_2gp_beta:
+        steps:
+            1:
+                options:
+                    package_type: Managed
+                    package_name: $project_config.project__package__name
+                    skip_validation: False
+                    ancestor_id: ""
+                    version_base: latest_github_release
+                    version_type: minor
+                    force_upload: True
+                    create_unlocked_dependency_packages: False
 
 plans:
   install:
